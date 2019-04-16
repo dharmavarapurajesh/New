@@ -1,0 +1,262 @@
+Day 1:
+  Angular JS v 1.x  (1 hour)
+  NodeJS essentials (30 mins)
+  Typescript (1 hr)
+  Angular 7 
+
+Day 2: 
+  Angular 7
+
+Day 3: 
+  Angular 7
+
+Day 4
+  Angular 7
+  Ionic 4 
+
+Day 5
+  Ionic 4 
+
+
+SPA
+---
+Single PAge apps
+
+Angular JS v 1.x 
+----
+  MVC 
+    Model - Data 
+    View - HTML 
+    Controller - Biz logic you write in JS (angular js specific)
+
+  Modules 
+  Directives 
+  Services 
+  Routing
+
+Angular 2+
+------
+  Component based 
+  Model 
+  Component
+
+  Modules 
+  Directives 
+  Services 
+  Routing 
+
+
+Angular JS v1.x Seed Project
+---
+refer the seed project
+	https://github.com/angular/angular-seed
+git clone https://github.com/angular/angular-seed.git
+
+Typical Angular JS 1.x app workflow 
+----
+home/
+  home.html
+  home.js  -- controllers, routers, model (connect to commondata source )
+about/
+  about.html
+  about.js -- controllers, routers, model (connect to commondata source )
+contacts/
+  contacts.html
+  contacts.js -- controllers, routers, model (connect to commondata source )
+
+services/
+  auth.js 
+
+app.js
+  myApp module defn 
+  home and about will be used here 
+  model (connect to commondata source )
+  routing 
+  services
+ 
+index.html 
+  ng-app="myApp" specified
+  app.js will be used 
+  home.js
+  about.js 
+  contact.js 
+===================================================================
+
+
+NPM Commands
+-==============
+npm i bootstrap 
+npm install bootstrap 
+
+npm update bootstrap 
+
+npm uninstall bootstrap 
+
+npm prune  ToDo: explore it 
+
+
+npm install webpack --save-dev 
+
+=======================
+
+Typescript 
+=========
+Javascript + data type + OOPS = Typescript 
+Learn TS here
+https://github.com/arunprabu/typescript-in-2-days
+
+
+Angular 7
+==========
+Dev env setup 
+	npm install -g @angular/cli
+
+
+
+
+ng version
+npm uninstall -g @angular/cli
+npm install -g @angular/cli
+
+https://getbootstrap.com/docs/4.3/examples/starter-template/
+
+Routing instructions
+=================
+Step 1: Add the links and set up paths in nav.component.html
+`<ul class="nav navbar-nav">
+    <li class="active"><a href="/">Home</a></li>
+    <li ><a href="/concepts">Concepts</a></li>
+    <li ><a href="/contacts">Contacts</a></li>
+    <li ><a href="/about">About</a></li>
+    <li ><a href="/get-in-touch">Get in Touch</a></li>
+</ul>
+
+Step2: Let's have the routes configured in app-routing.module.ts
+//syntax : path should have string and the component when that path is hit
+const routes: Routes = [
+  { path: '', component: ConceptsComponent },
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'get-in-touch', component: GetInTouchComponent },
+];
+
+
+Step3: What should be replaced? Add router outlet in layout file app.comp.html
+<div style="text-align:center; margin-top:80px;">
+  <router-outlet></router-outlet>
+</div>
+
+Step 4:
+Check the app. The routes should work. But the page will reload. Let's fix it.
+in nav.comp.html 
+replace href with routerLink 
+<ul class="nav navbar-nav">
+    <li class="active"><a routerLink="/">Home</a></li>
+    <li ><a routerLink="/concepts">Concepts</a></li>
+    <li ><a routerLink="/contacts">Contacts</a></li>
+    <li ><a routerLink="/about">About</a></li>
+    <li ><a routerLink="/get-in-touch">Get in Touch</a></li>
+</ul>
+
+Step5:
+Check the app. page should not reload.
+let's have active class. have routerLinkActive in li.
+<li routerLinkActive="active">
+
+Step6: Now, when you see the navigation menu, active class will be added in another link also. 
+Let's fix it.
+
+<ul class="nav navbar-nav">
+    <li routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+    <li routerLinkActive="active"><a routerLink="/concepts">Concepts</a></li>
+</ul>
+
+
+Tabbed Interface
+---------
+index.html
+---
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+concept.comp.html
+----
+<div class="container-fluid">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="si-tab" data-toggle="tab" href="#si" role="tab" aria-controls="home"
+          aria-selected="true">String Interpolation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pb-tab" data-toggle="tab" href="#pb" role="tab" aria-controls="profile" aria-selected="false">Property
+          Binding</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="cpb-tab" data-toggle="tab" href="#cpb" role="tab" aria-controls="contact" aria-selected="false">Custom
+          Property Binding</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="eb-tab" data-toggle="tab" href="#eb" role="tab" aria-controls="contact" aria-selected="false">Event
+          Binding</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="ceb-tab" data-toggle="tab" href="#ceb" role="tab" aria-controls="contact" aria-selected="false">Custom
+          Event Binding</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="twb-tab" data-toggle="tab" href="#twb" role="tab" aria-controls="contact" aria-selected="false">Two
+          way Binding</a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link" id="sd-tab" data-toggle="tab" href="#sd" role="tab" aria-selected="false">Structural
+          Directives</a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link" id="pipes-tab" data-toggle="tab" href="#pipes" role="tab" aria-selected="false">Pipes</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+  
+      <!-- String Interpolcation Content-->
+      <div class="tab-pane fade show active" id="si" role="tabpanel">
+        String Interpolation
+      </div>
+  
+      <!-- Property Binding Tab Content-->
+      <div class="tab-pane fade" id="pb" role="tabpanel">
+        Property Binding
+      </div>
+      <!-- Custom Propery Binding -->
+      <div class="tab-pane fade" id="cpb" role="tabpanel">
+        Custom Property Binding
+      </div>
+  
+      <!-- Event Binding -->
+      <div class="tab-pane fade" id="eb" role="tabpanel">
+        Event Binding
+      </div>
+  
+      <div class="tab-pane fade" id="ceb" role="tabpanel">
+        CEB 
+      </div>
+  
+      <div class="tab-pane fade" id="twb" role="tabpanel">
+        TWB 
+      </div>
+  
+      <div class="tab-pane fade" id="sd" role="tabpanel">
+        Structural Directive
+      </div>
+  
+      <div class="tab-pane fade" id="pipes" role="tabpanel">
+        <h2>Pipes </h2>
+      </div>
+    </div>
+    <hr style="border: solid 1px black;">
+  </div>
+
+
